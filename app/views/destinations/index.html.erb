@@ -1,0 +1,40 @@
+<% if notice != nil %>
+  <p id="notice" class="alert alert-success" role="alert">
+    <%= notice %>
+  </p>
+<% end %>
+
+<h1>Listing Destinations</h1>
+
+<ul class="nav nav-pills" role="tablist">
+  <li><%= link_to "All", destinations_path %></li> 
+  <% @my_countries.each do |c| %>
+  <li><%= link_to c.country, destinations_path(country: c.country) %></li>
+  <% end %>
+
+</ul>
+<%= link_to 'New Destination', new_destination_path, class: "btn btn-success" %>
+
+
+<div class="row">
+  <% @destinations.each do |destination| %>
+    <div class="col-md-4">
+      <div class="well index-wells"> 
+      <% if destination.avatar.url == nil %>
+        <%= image_tag "city_silhoutte.png", alt: "No Image found for destination", width: "250" %>
+        <% else %>
+        <p><%= image_tag destination.avatar.url, alt: "#{destination.city}", width: "250" %></p>
+        <% end %>     
+        <h2><%= "#{destination.city}, #{destination.country}" %></h2>
+        <p><strong>Population</strong> <%= number_with_delimiter destination.populations %></p>
+        <p><%= destination.description.html_safe %></p>
+        <p><%= link_to 'Show', destination %>
+        <p>  
+        <%= link_to 'Edit', edit_destination_path(destination) %> <%= link_to 'Destroy', destination, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </p>
+      </div> 
+    </div> 
+  <% end %>
+</div>
+
+

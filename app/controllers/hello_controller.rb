@@ -4,7 +4,7 @@ class HelloController < ApplicationController
   	@countries = ["Mexico", "Canada", "Panama"]
   	@images = ["mexico1.jpg", "canada1.jpg", "panama1.jpg", "panama2.jpg"]
 
-  	@image_hash = ["Mexico City" => "mexico1.jpg", "Canada" => "canada1.jpg", "Panama1" => "panama1.jpg", "Panama2" => "panama2.jpg"]
+  	@image_hash = {"Mexico City" => "mexico1.jpg", "Canada" => "canada1.jpg", "Panama1" => "panama1.jpg", "Panama2" => "panama2.jpg"}
   end
 
   def about
